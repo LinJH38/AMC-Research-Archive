@@ -1,0 +1,21 @@
+{
+  "database": "Zotero",
+  "noteImportFolder": "Zotero",
+  "pdfExportImageDPI": 120,
+  "pdfExportImageFormat": "jpg",
+  "pdfExportImageQuality": 90,
+  "citeFormats": [],
+  "exportFormats": [
+    {
+      "name": "AMC 논문 가져오기",
+      "outputPathTemplate": "AMC_Papers/@{{citekey}}.md",
+      "imageOutputPathTemplate": "AMC_Papers/images",
+      "imageBaseNameTemplate": "image",
+      "cslStyle": "apa",
+      "templatePath": "Templates/Zotero Template.md"
+    }
+  ],
+  "citeSuggestTemplate": "[[{{citekey}}]]",
+  "openNoteAfterImport": true,
+  "whichNotesToOpenAfterImport": "all-imported-notes"
+}
