@@ -1,0 +1,154 @@
+---
+type: literature_note
+citekey: chenAbandonLocalityFrameWise2023
+tags: [AMC, paper]
+---
+# Abandon Locality: Frame-Wise Embedding Aided Transformer for Automatic Modulation Recognition
+
+## 📑 논문 개요 (Overview)
+> [!abstract] 초록
+> Automatic modulation recognition (AMR) has been considered as an efﬁcient technique for non-cooperative communication and intelligent communication. In this work, we propose a modiﬁed transformer-based method for AMR, called frame-wise embedding aided transformer (FEA-T), aiming to extract the global correlation feature of the signal to obtain higher classiﬁcation accuracy as well as lower time cost. To enhance the global modeling capability of the transformer, we design a frame-wise embedding module (FEM) to aggregate more samples into a token in the embedding stage to generate a more efﬁcient token sequence. We also present the optimal frame length by analyzing the representation ability of each transformer layer for a better trade-off between the speed and the performance. Moreover, we design a novel dual-branch gate linear unit (DB-GLU) scheme for the feed-forward network of the transformer to reduce the model size and enhance the performance. Experimental results on RadioML2018.01A datasets demonstrate that the proposed method outperforms state-of-the-art works in terms of recognition accuracy and running speed.
+
+- **저자:** Yantao Chen, Binhong Dong, Cuiting Liu, Wenhui Xiong, Shaoqian Li
+- **발표 연도:** 2023
+- **Zotero 바로가기:** [로컬 앱에서 열기](zotero://select/library/items/A3CFKN7H)
+- **PDF 원문 보기:** [옵시디언에서 열기]()
+
+---
+## 🧠 AMC 연구 적용 포인트
+
+- CNN을 제거함으로써 생기는 Inductive bias, local information의 부재로 인해, 저SNR에서 정확도가 매우 낮음(노이즈 저항력의 상실). 따라서 우리 모델에서는 CNN을 삽입해야함.
+- I/Q를 단순 concatenate함으로써, 회전 불변성과 위상 상관관계 학습을 전혀 하지 못함. 복소수 상관관계를 암묵적으로 재학습해야 하므로 데이터 효율성 저하됨. 따라서 우리 모델에서는 I/Q의 complex 특성을 활용하여 융합하는 CNN을 앞단에 삽입.
+- 최적의 하이퍼파라미터 L=32에서 총 파라미터 수는 대략 168K~177K 수준으로 목표로 하는 15K이하에는 10배 정도의 차이가 존재함.
+- DB-GLU 이식(FFN 파라미터 다이어트): Transformer 활용 시, FFN 대신 DB-GLU를 적용하여, 파라미터 수를 극소화한 상태에서도 손실된 feature map의 표현력을 증폭. 그러나, 우리 모델에서는 논문에서 나오는 순수한 MHSA(Multi-Head Self-Attention)대신 O(N)시간 복잡도의 Attention 기법 활용.
+
+---
+## 📝 내 요약 노트 (Zotero Notes)
+
+## 용어
+
+- ## Rank(선형대수학):
+    
+    행렬의 column이 만들어내는 벡터 공간에서 basis의 최대 개수이자, 그 공간의 Dimension(서로 독립적인 차원을 가지는 basis의 수).
+    
+- ## Low-Rank Bottleneck:
+    
+    S(시퀀스 길이)는 넓은데, 헤드 차원(d_p)가 너무 적어서 MHSA에서 [S,S]의 다채로운 관계를 표현하지 못하는 현상.
+    
+    Rank inequality:
+    
+    [rank(AB)<=min(rank(A),rank(B))]관계 성립.
+    
+    계산의 효율성을 위해, Transformer에서 일반적으로 d_p를 S보다 작게 설정한다(Q와 K [S,d_p]).
+    
+    이를 Rank inequality 수식에 대입하면, P(Context Attention Matrix, [S,S])의 최대 rank가 d_p로 결정된다.
+    
+    만약 S = 128, d_p =16이라면, [128, 128] Matrix(128 시퀀스 간의 관계)를 단 16가지 패턴으로 제한시켜 나타내야 한다(=Low-Rank Bottleneck).
+    
+
+
+
+
+---
+## 🖋️ 조테로 하이라이트 & 캡처
+> [!quote]|#ffd400
+> In general, the modulated signals usually transmit bit sequences without semantic information, and each modulation symbol appears in the waveform with uniform probability. Hence, more valuable features for the AMR task should be uniformly distributed in the waveform. The extract of these features should not be within the locality bias assumption. ([p.](zotero://open-pdf/library/items/WUAU9FE8?page=))
+> **메모:** 1. 통신 신호(Modulated Signals)이 자연어 데이터처럼 뚜렷한 의미론적(Semantic) 국소 정보가 없으며, 각 변조 심볼(Symbol)이 파형 전체에 걸쳐 균일한 확률분포로 존재한다는 '물리적 직괸'
+
+2. 이에 의거하여, Inductive Bias는 사용할 필요가 없으며, Global Correlation을 추출하는 것이 AMC 성능 향상과 연산 속도 개선에 유리하다는 가설 도출
+
+3. 따라서 Transformer의 병렬 연산 능력을 극대화하여 추론 속도를비약적으로 높히자는 결론.
+> [!quote]|#ffd400
+> The contributions of this study are summarized as follows. ([p.](zotero://open-pdf/library/items/WUAU9FE8?page=))
+> **메모:** [contribution]
+1. Inductive Bias를 극복하고 Transformer만 사용
+
+2. 경량화
+
+3. Inference Time 최소화
+![[AMC_Papers/images/image-2-x390-y668.png]]
+![[AMC_Papers/images/image-2-x431-y669.png]]
+![[AMC_Papers/images/image-2-x218-y594.png]]
+![[AMC_Papers/images/image-2-x102-y446.png]]
+![[AMC_Papers/images/image-2-x361-y595.png]]
+> [!quote]|#5fb236
+> input signal r ∈ CN×1 ([p.2](zotero://open-pdf/library/items/WUAU9FE8?page=2))
+> **메모:** 1. N: length of signal
+> [!quote]|#ffd400
+> Let L and R denote the frame size and the sliding step length ([p.2](zotero://open-pdf/library/items/WUAU9FE8?page=2))
+> **메모:** 1. L: frame size
+
+2. R: sliding step length
+> [!quote]|#ffd400
+> x(t) = [rI (tR), rI (tR + 1), . . . , rI (tR + L − 1),  rQ(tR), rQ(tR + 1), . . . , rQ(tR + L − 1)]T ([p.2](zotero://open-pdf/library/items/WUAU9FE8?page=2))
+> **메모:** [개별 프레임 column vector]
+1. tR: 시작점, t(현재 프레임의 순번: 0번째, 1번째 ...), R(보폭), tR(해당 t번째 프레임이 전체 시퀀스 길이의 어디서부터 시작하는지 나타냄)
+
+2. +1씩: 시퀀스를 한 칸씩 이동 시킴
+
+3. L-1: 끝점(총 길이=L)
+
+4. 차원: 2L(I와 Q를 concatenate) x 1(column vector)
+> [!quote]|#ffd400
+> X = [x(0), x(1), . . . , x(F −1)]T , ([p.2](zotero://open-pdf/library/items/WUAU9FE8?page=2))
+> **메모:** [Input feature]
+1. 개별 column vector x를 concatenate
+
+2. 차원: F(전체 프레임 길이) x 2L(개별 프레임 column vector 크기)
+> [!quote]|#ffd400
+> F = (N − L)/R + 1 ([p.2](zotero://open-pdf/library/items/WUAU9FE8?page=2))
+> **메모:** [Sliding Window 수식]
+1. N: 전체 시퀀스 길이(ex, 128)
+
+2. L: 프레임 길이(ex, 16칸)
+
+3. R: 슬라이딩 윈도우(ex, 8칸)
+
+4. +1: 첫번째 프레임을 더해준 것
+
+5. N-L: 남아있는 이동 가능한 칸 수(ex, 128-16=112칸)
+
+6. (N-L)/R: 남아있는 칸 수를 슬라이딩 윈도우 칸 수만큼 이동시키면서 프레임을 추가로 찍어냄(ex, 112/8 = 14: 프레임 수)
+
+7. F: 프레임의 갯수(ex, 14(슬라이딩 윈도우 이동시키며 찍어낸 프레임 수)+1(첫번째 프레임) = 15개)
+> [!quote]|#ff6666
+> the learnable position bias Wpos ∈ R(F +1)×2L for position embedding ([p.2](zotero://open-pdf/library/items/WUAU9FE8?page=2))
+> **메모:** [Positional Embedding]
+1.Learnable position bias Matrix를 사용한 Absolute positional embedding 방식
+
+------> 통신신호에서 이러한 APE를 왜 사용했을까? 트레이드오프를 알아야함. 그리고 이게 물리적으로 의미가 있을까? RPE 방식이 특징 추출에 더 우수할 것 같은데, 그냥 단순하게 진짜 Transformation 연산만을 위한 구조이기 때문에 ape인가?
+> [!quote]|#ff6666
+> X0 = [xcls; XWe] + Wpos. ([p.2](zotero://open-pdf/library/items/WUAU9FE8?page=2))
+> **메모:** [최종 input token sequence]
+> [!quote]|#ffd400
+> For the MHSA block, we incorporate the talking-head attention [15] as the implementation scheme. ([p.2](zotero://open-pdf/library/items/WUAU9FE8?page=2))
+> **메모:** [MHSA Block]
+1. O(N^2) 연산 복잡도 Attention 기법 활용
+
+2. talking-head 기법 활용: head가 뽑아내는 특징 간 융합 높힘
+> [!quote]|#ffd400
+> To compress the model size for the lightweight requirement of the AMR task, we propose a practical DB-GLU scheme to replace the traditional MLP scheme in the FFN ([p.2](zotero://open-pdf/library/items/WUAU9FE8?page=2))
+> **메모:** [Feed Forward Network]
+1. 기존의 MLP 방식 대신 연산량을 낮추기 위한 DB-GLU기법 활용
+![[AMC_Papers/images/image-3-x86-y563.png]]
+> [!quote]|#ff6666
+> Finally, all of the heads X(i)  l ∈ R(F +1)×dp are  concatenated in the second dimension, and a linear projection Wo ∈ Rhdp×2L is applied. ([p.3](zotero://open-pdf/library/items/WUAU9FE8?page=3))
+> **메모:** 1. 각 헤드의 feature maps을 concatenate 시키고 [F+1, h*d_p]
+
+2. 이를 linear projection W_o에 적용
+
+3. 최종 output 사이즈: [F+1, 2L]
+![[AMC_Papers/images/image-3-x44-y323.png]]
+> [!quote]|#5fb236
+> 36L2 + 16L + h2 = O(L2) ([p.3](zotero://open-pdf/library/items/WUAU9FE8?page=3))
+> **메모:** [Computational Complexity]
+1. L(frame length)의 제곱에 비례
+> [!quote]|#5fb236
+> O(LF 2) ([p.3](zotero://open-pdf/library/items/WUAU9FE8?page=3))
+> **메모:** [Computational Complexity]
+1. MHSA은 F(#frame)의 제곱에 비례
+
+2. L과 F는 반비례하므로, 최적점을 찾아야함.
+![[AMC_Papers/images/image-3-x336-y637.png]]
+![[AMC_Papers/images/image-3-x320-y519.png]]
+![[AMC_Papers/images/image-3-x392-y303.png]]

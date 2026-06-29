@@ -22,7 +22,7 @@
             }
           },
           {
-            "id": "488fcfeab46ec760",
+            "id": "515e781581fa514a",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -36,17 +36,17 @@
             }
           },
           {
-            "id": "515e781581fa514a",
+            "id": "f4d3c2c73c1fa9b9",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AMC_Papers/@zhangAutomaticModulationClassification2023.md",
+                "file": "AMC_Papers/@chenAbandonLocalityFrameWise2023.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "@zhangAutomaticModulationClassification2023"
+              "title": "@chenAbandonLocalityFrameWise2023"
             }
           },
           {
@@ -78,7 +78,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -228,10 +228,10 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "AMC_Papers/@guoUltralightConvolutionalNeural2024.md"
+                "file": "AMC_Papers/@chenAbandonLocalityFrameWise2023.md"
               },
               "icon": "lucide-info",
-              "title": "File properties for @guoUltralightConvolutionalNeural2024"
+              "title": "File properties for @chenAbandonLocalityFrameWise2023"
             }
           }
         ],
@@ -253,25 +253,26 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "903096cdbb5169cb",
+  "active": "f4d3c2c73c1fa9b9",
   "lastOpenFiles": [
+    "Templates/Zotero Template.md",
+    "AMC_Papers/@chenAbandonLocalityFrameWise2023.md",
+    "AMC_Papers/images/image-3-x392-y303.png",
+    "AMC_Papers/images/image-3-x320-y519.png",
+    "AMC_Papers/images/image-3-x336-y637.png",
+    "AMC_Papers/images/image-3-x44-y323.png",
+    "AMC_Papers/images/image-3-x86-y563.png",
+    "AMC_Papers/images/image-2-x361-y595.png",
+    "AMC_Papers/images/image-2-x102-y446.png",
+    "AMC_Papers/images/image-2-x218-y594.png",
+    "AMC_Papers/images/image-2-x431-y669.png",
+    "AMC_Papers/images/image-2-x390-y668.png",
+    "AMC_Papers/@guoUltralightConvolutionalNeural2024.md",
     "AMC_Papers/@zhangAutomaticModulationClassification2023.md",
+    "().md",
     "AMC_Papers/@tangReparameterizationCausalConvolutional2024.md",
     "AMC_Papers/@liIDHNetCNNTransformerHybrid2026.md",
     "AMC_Papers/@liComplexValuedTransformerAutomatic2024.md",
-    "AMC_Papers/@guoUltralightConvolutionalNeural2024.md",
-    "AMC_Papers/images/image-2-x86-y515.png",
-    "AMC_Papers/images/image-2-x87-y634.png",
-    "Templates/Zotero Template.md",
-    "AMC_Papers/images/image-7-x354-y212.png",
-    "AMC_Papers/images/image-6-x452-y495.png",
-    "AMC_Papers/images/image-6-x214-y511.png",
-    "AMC_Papers/images/image-6-x331-y650.png",
-    "AMC_Papers/images/image-6-x72-y582.png",
-    "AMC_Papers/images/image-5-x89-y519.png",
-    "AMC_Papers/images/image-4-x60-y539.png",
-    "AMC_Papers/images/image-3-x352-y36.png",
-    "().md",
     "AMC_Papers/@liIDHNetCNNTransformerHybrid2026",
     "Welcome.md",
     "AMC/Untitled.md",
