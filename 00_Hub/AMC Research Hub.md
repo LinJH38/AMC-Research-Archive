@@ -9,13 +9,15 @@ Central dashboard for AMC research. GitHub equivalent: [README](../README.md).
 
 ## Literature
 
-- [[@chenAbandonLocalityFrameWise2023|FEA-T — Frame-wise Embedding Transformer (Chen 2023)]]
-- [[@zhangAutomaticModulationClassification2023|AWN — Adaptive Wavelet Network (Zhang 2023)]]
-- [[@liComplexValuedTransformerAutomatic2024|CV-TRN — Complex-Valued Transformer (Li 2024)]]
-- [[@guoUltralightConvolutionalNeural2024|ULCNN — Ultralight CNN (Guo 2024)]]
-- [[@tangReparameterizationCausalConvolutional2024|RepCCNet — Reparameterization Causal CNN (Tang 2024)]]
-- [[@xinCPPCNetHighPerformanceLowComplexity2025|CPPCNet — Complex Partial Pointwise CNN (Xin 2025)]]
-- [[@liIDHNetCNNTransformerHybrid2026|IDHNet — CNN-Transformer Hybrid (Li 2026)]]
+| Paper | My Review | HTML Report |
+|-------|-----------|-------------|
+| FEA-T (Chen 2023) | [[@chenAbandonLocalityFrameWise2023|Read Review]] | [[AMC_Papers/reports/FEA-T.htm|View HTML]] |
+| AWN (Zhang 2023) | [[@zhangAutomaticModulationClassification2023|Read Review]] | [[AMC_Papers/reports/AWN.htm|View HTML]] |
+| CV-TRN (Li 2024) | [[@liComplexValuedTransformerAutomatic2024|Read Review]] | [[AMC_Papers/reports/CV-TRN.htm|View HTML]] |
+| ULCNN (Guo 2024) | [[@guoUltralightConvolutionalNeural2024|Read Review]] | [[AMC_Papers/reports/ULCNN.htm|View HTML]] |
+| RepCCNet (Tang 2024) | [[@tangReparameterizationCausalConvolutional2024|Read Review]] | [[AMC_Papers/reports/RepCCNet.htm|View HTML]] |
+| CPPCNet (Xin 2025) | [[@xinCPPCNetHighPerformanceLowComplexity2025|Read Review]] | [[AMC_Papers/reports/CPPCNet.htm|View HTML]] |
+| IDHNet (Li 2026) | [[@liIDHNetCNNTransformerHybrid2026|Read Review]] | [[AMC_Papers/reports/IDHNet.htm|View HTML]] |
 
 → Full index: [[Literature Index]]
 

@@ -6,15 +6,15 @@ This repository is an [Obsidian](https://obsidian.md/) vault synced with GitHub.
 
 ## Literature Notes
 
-| Paper | Key Idea | Note |
-|-------|----------|------|
-| FEA-T (Chen 2023) | Frame-wise Embedding Transformer | [Read](AMC_Papers/@chenAbandonLocalityFrameWise2023.md) |
-| AWN (Zhang 2023) | Adaptive Wavelet Network | [Read](AMC_Papers/@zhangAutomaticModulationClassification2023.md) |
-| CV-TRN (Li 2024) | Complex-Valued Transformer | [Read](AMC_Papers/@liComplexValuedTransformerAutomatic2024.md) |
-| ULCNN (Guo 2024) | Ultralight CNN for UAV | [Read](AMC_Papers/@guoUltralightConvolutionalNeural2024.md) |
-| RepCCNet (Tang 2024) | Reparameterization Causal CNN | [Read](AMC_Papers/@tangReparameterizationCausalConvolutional2024.md) |
-| CPPCNet (Xin 2025) | Complex Partial Pointwise CNN | [Read](AMC_Papers/@xinCPPCNetHighPerformanceLowComplexity2025.md) |
-| IDHNet (Li 2026) | CNN-Transformer Hybrid | [Read](AMC_Papers/@liIDHNetCNNTransformerHybrid2026.md) |
+| Paper | Key Idea | My Review Link | HTML Report |
+|-------|----------|----------------|-------------|
+| FEA-T (Chen 2023) | Frame-wise Embedding Transformer | [Read Review](AMC_Papers/@chenAbandonLocalityFrameWise2023.md) | [View HTML](https://raw.githubusercontent.com/LinJH38/AMC-Research-Archive/main/AMC_Papers/reports/FEA-T.htm) |
+| AWN (Zhang 2023) | Adaptive Wavelet Network | [Read Review](AMC_Papers/@zhangAutomaticModulationClassification2023.md) | [View HTML](https://raw.githubusercontent.com/LinJH38/AMC-Research-Archive/main/AMC_Papers/reports/AWN.htm) |
+| CV-TRN (Li 2024) | Complex-Valued Transformer | [Read Review](AMC_Papers/@liComplexValuedTransformerAutomatic2024.md) | [View HTML](https://raw.githubusercontent.com/LinJH38/AMC-Research-Archive/main/AMC_Papers/reports/CV-TRN.htm) |
+| ULCNN (Guo 2024) | Ultralight CNN for UAV | [Read Review](AMC_Papers/@guoUltralightConvolutionalNeural2024.md) | [View HTML](https://raw.githubusercontent.com/LinJH38/AMC-Research-Archive/main/AMC_Papers/reports/ULCNN.htm) |
+| RepCCNet (Tang 2024) | Reparameterization Causal CNN | [Read Review](AMC_Papers/@tangReparameterizationCausalConvolutional2024.md) | [View HTML](https://raw.githubusercontent.com/LinJH38/AMC-Research-Archive/main/AMC_Papers/reports/RepCCNet.htm) |
+| CPPCNet (Xin 2025) | Complex Partial Pointwise CNN | [Read Review](AMC_Papers/@xinCPPCNetHighPerformanceLowComplexity2025.md) | [View HTML](https://raw.githubusercontent.com/LinJH38/AMC-Research-Archive/main/AMC_Papers/reports/CPPCNet.htm) |
+| IDHNet (Li 2026) | CNN-Transformer Hybrid | [Read Review](AMC_Papers/@liIDHNetCNNTransformerHybrid2026.md) | [View HTML](https://raw.githubusercontent.com/LinJH38/AMC-Research-Archive/main/AMC_Papers/reports/IDHNet.htm) |
 
 ## My Research
 
@@ -32,9 +32,10 @@ This repository is an [Obsidian](https://obsidian.md/) vault synced with GitHub.
 
 1. Annotate papers in **Zotero**
 2. Import via **Obsidian Zotero Desktop Connector** → `AMC_Papers/@{citekey}.md`
-3. Fill in `## AMC 연구 적용 포인트` for research ideas
-4. Document models in `My_Research/Models/` and results in `Experiments/`
-5. Commit with prefixes: `literature:`, `model:`, `experiment:`, `hub:`
+3. Export Zotero HTML report → `AMC_Papers/reports/{short-name}.htm`
+4. Fill in `## AMC 연구 적용 포인트` for research ideas
+5. Document models in `My_Research/Models/` and results in `Experiments/`
+6. Commit with prefixes: `literature:`, `model:`, `experiment:`, `hub:`
 
 ## Obsidian Setup
 

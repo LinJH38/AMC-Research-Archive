@@ -18,20 +18,21 @@ SORT file.name ASC
 
 ## Manual Index
 
-| Paper | Citekey | Tags |
-|-------|---------|------|
-| FEA-T | `chenAbandonLocalityFrameWise2023` | AMC, Transformer, FEM, DB-GLU |
-| AWN | `zhangAutomaticModulationClassification2023` | AMC, Wavelet, LiftingScheme |
-| CV-TRN | `liComplexValuedTransformerAutomatic2024` | AMC, Transformer, ComplexValued |
-| ULCNN | `guoUltralightConvolutionalNeural2024` | AMC, CNN, Lightweight |
-| RepCCNet | `tangReparameterizationCausalConvolutional2024` | AMC, CNN, Causal |
-| CPPCNet | `xinCPPCNetHighPerformanceLowComplexity2025` | AMC, ComplexValued, Lightweight |
-| IDHNet | `liIDHNetCNNTransformerHybrid2026` | AMC, HybridArchitecture |
+| Paper | Citekey | My Review | HTML Report | Tags |
+|-------|---------|-----------|-------------|------|
+| FEA-T | `chenAbandonLocalityFrameWise2023` | [[@chenAbandonLocalityFrameWise2023|Read Review]] | [[AMC_Papers/reports/FEA-T.htm|View HTML]] | AMC, Transformer, FEM, DB-GLU |
+| AWN | `zhangAutomaticModulationClassification2023` | [[@zhangAutomaticModulationClassification2023|Read Review]] | [[AMC_Papers/reports/AWN.htm|View HTML]] | AMC, Wavelet, LiftingScheme |
+| CV-TRN | `liComplexValuedTransformerAutomatic2024` | [[@liComplexValuedTransformerAutomatic2024|Read Review]] | [[AMC_Papers/reports/CV-TRN.htm|View HTML]] | AMC, Transformer, ComplexValued |
+| ULCNN | `guoUltralightConvolutionalNeural2024` | [[@guoUltralightConvolutionalNeural2024|Read Review]] | [[AMC_Papers/reports/ULCNN.htm|View HTML]] | AMC, CNN, Lightweight |
+| RepCCNet | `tangReparameterizationCausalConvolutional2024` | [[@tangReparameterizationCausalConvolutional2024|Read Review]] | [[AMC_Papers/reports/RepCCNet.htm|View HTML]] | AMC, CNN, Causal |
+| CPPCNet | `xinCPPCNetHighPerformanceLowComplexity2025` | [[@xinCPPCNetHighPerformanceLowComplexity2025|Read Review]] | [[AMC_Papers/reports/CPPCNet.htm|View HTML]] | AMC, ComplexValued, Lightweight |
+| IDHNet | `liIDHNetCNNTransformerHybrid2026` | [[@liIDHNetCNNTransformerHybrid2026|Read Review]] | [[AMC_Papers/reports/IDHNet.htm|View HTML]] | AMC, HybridArchitecture |
 
 ## Adding a New Paper
 
 1. Import from Zotero via Desktop Connector
-2. Fill `## AMC 연구 적용 포인트`
-3. Add a row to the manual table above
-4. Update [README](../README.md) Literature table
-5. `git commit -m "literature: add {citekey}"`
+2. Export Zotero HTML report → `AMC_Papers/reports/{short-name}.htm`
+3. Fill `## AMC 연구 적용 포인트`
+4. Add a row to the manual table above
+5. Update [README](../README.md) Literature table
+6. `git commit -m "literature: add {citekey}"`
