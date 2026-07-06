@@ -1,0 +1,20 @@
+# Obsidian (machine-specific state)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# Zotero connector binary (reinstalled by the plugin)
+.obsidian/plugins/obsidian-zotero-desktop-connector/pdfannots2json.exe
+
+# Experiment artifacts
+Experiments/**/logs/
+**/__pycache__/
+*.pyc
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary scripts
+_parse_fea.py
+_fea_extract.txt

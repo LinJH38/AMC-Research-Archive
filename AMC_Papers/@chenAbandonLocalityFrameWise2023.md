@@ -130,6 +130,58 @@ tags: [AMC, paper]
 > To compress the model size for the lightweight requirement of the AMR task, we propose a practical DB-GLU scheme to replace the traditional MLP scheme in the FFN ([p.2](zotero://open-pdf/library/items/WUAU9FE8?page=2))
 > **메모:** [Feed Forward Network]
 1. 기존의 MLP 방식 대신 연산량을 낮추기 위한 DB-GLU기법 활용
+
+> [!quote]|#ffd400
+> (GLU — Gated Linear Units) ([p.328](zotero://open-pdf/library/items/WUAU9FE8?page=328))
+> **메모:** [GLU]
+1. 본래 FFN에서 activation function(ReLU, GeLU 등)을 대체하여 표현력을 높이기 위한 방법
+2. 비선형성 표현력이 높아지는 대신 연산량 증가 (Trade-off)
+3. d'_ff 차원을 2/3으로 줄여 증가한 매개변수·계산량을 원래 수준으로 맞출 수 있음
+4. 수식: W_fc1(W_fc1·X_l ⊗ g(W_fc2·X_l))
+
+> [!quote]|#ffd400
+> (DB-GLU) ([p.328](zotero://open-pdf/library/items/WUAU9FE8?page=328))
+> **메모:** [DB-GLU]
+1. GLU를 개선하여 더 높은 FFN 표현력 확보
+2. W(linear projection) 차원 d_f = 4L (MLP 8L의 절반) → MLP 대비 (1/2)² = 25% parameters
+3. 낮은 FLOPs와 parameters 유지
+
+> [!quote]|#ffd400
+> (전체 구조) ([p.328](zotero://open-pdf/library/items/WUAU9FE8?page=328))
+> **메모:** [전체 구조]
+1. CNN 앞단 제거 → 파라미터 획기적 감소 (=Abandon locality, 대신 저SNR 급격한 성능 하락)
+2. FEM으로 Transformer 입력 token sequence 수 제한 → 연산 복잡도 감소
+3. FFN을 MLP 대신 DB-GLU → 표현력 극대화 + 파라미터 감소
+4. 순수 MHSA로도 낮은 parameters, FLOPs, Inference time 달성
+
+> [!quote]|#ffd400
+> (FEM module) ([p.328](zotero://open-pdf/library/items/WUAU9FE8?page=328))
+> **메모:** [FEM module]
+1. input signal r → x sequence 생성
+2. Framing → X tensor 변환
+3. Linear matrix 통과 + class token concatenation
+4. Absolute Positional Embedding 적용
+5. 최종 input token X_0 [F+1, 2L]: F+1(프레임+클래스 토큰), 2L(I/Q concatenate)
+6. FEM으로 Encoder 입력 token sequence를 낮게 유지 → MHSA FLOPs 감소
+
+> [!quote]|#ffd400
+> (Received signal) ([p.328](zotero://open-pdf/library/items/WUAU9FE8?page=328))
+> **메모:** [Received signal 수식]
+1. s(t): transmission symbol (송신 신호)
+2. m: modulation 종류
+3. F: modulator
+4. h(t): impulse response
+5. n: noise
+6. AMC: s를 통해 m을 유추
+
+> [!quote]|#ff6666
+> (MHSA dot product) ([p.329](zotero://open-pdf/library/items/WUAU9FE8?page=329))
+> **메모:** [MHSA 상세]
+1. P_i(Dot product) = Q·K/(d_p)^½, [F+1, F+1]
+2. P̃_i(context attention matrix): W_t(head-wise linear mixing)로 talking heads 구현
+3. X_i^l: i번째 헤드 feature vector, X_{l-1}(이전 layer 입력), W^i_v(value matrix)
+4. softmax(p_i)로 각 토큰이 서로 참조하는 확률값으로 변환
+5. i번째 헤드 feature vector가 Attention 비율대로 V값 취함, 사이즈: [F+1, d_p]
 ![[AMC_Papers/images/image-3-x86-y563.png]]
 > [!quote]|#ff6666
 > Finally, all of the heads X(i)  l ∈ R(F +1)×dp are  concatenated in the second dimension, and a linear projection Wo ∈ Rhdp×2L is applied. ([p.3](zotero://open-pdf/library/items/WUAU9FE8?page=3))
@@ -149,6 +201,33 @@ tags: [AMC, paper]
 1. MHSA은 F(#frame)의 제곱에 비례
 
 2. L과 F는 반비례하므로, 최적점을 찾아야함.
+
+> [!quote]|#ff6666
+> (DB-GLU 수식) ([p.329](zotero://open-pdf/library/items/WUAU9FE8?page=329))
+> **메모:** [DB-GLU 수식]
+1. 표현력 극대화를 위한 새로운 GLU 구조
+2. W 차원 d_f = 2L (MLP 4L의 절반) → MLP 대비 25% parameters
+
+> [!quote]|#ff6666
+> (W_Q, W_K) ([p.329](zotero://open-pdf/library/items/WUAU9FE8?page=329))
+> **메모:**
+1. W_Q: 각 head linear projection [2L, d_p(=2L/h)] concatenation → [2L, 2L]
+2. W_K도 동일
+
+> [!quote]|#ff6666
+> (Context Attention / Low-Rank) ([p.329](zotero://open-pdf/library/items/WUAU9FE8?page=329))
+> **메모:** [Context Attention scores]
+1. talking heads: 기존 MHSA에서 P̃_i는 d_p 차원에 갇힘 (=Low-Rank bottleneck)
+2. W_t가 이상적으로 학습되면 P̃_i ≈ W_Q·W_K^T 내적과 동일
+3. W_Q·W_K^T Rank = 2L로 증가
+4. Rank(P̃_i) = min(Rank(X_{l-1}), Rank(W_Q·W_K)) = min(F+1, 2L)
+5. F+1 ≤ 2L이면 Low-Rank bottleneck 회피 → L_opt 도출 가능
+
+> [!quote]|#5fb236
+> (L_opt) ([p.329](zotero://open-pdf/library/items/WUAU9FE8?page=329))
+> **메모:** [L_opt]
+1. Row-rank bottleneck 회피: F+1 ≤ 2L
+2. F = (N-L)/R + 1에 대입하여 L_opt 도출
 ![[AMC_Papers/images/image-3-x336-y637.png]]
 ![[AMC_Papers/images/image-3-x320-y519.png]]
 ![[AMC_Papers/images/image-3-x392-y303.png]]
