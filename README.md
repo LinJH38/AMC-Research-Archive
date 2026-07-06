@@ -8,13 +8,13 @@ This repository is an [Obsidian](https://obsidian.md/) vault synced with GitHub.
 
 | Paper | Key Idea | My Review Link | HTML Report |
 |-------|----------|----------------|-------------|
-| FEA-T (Chen 2023) | Frame-wise Embedding Transformer | [Read Review](AMC_Papers/@chenAbandonLocalityFrameWise2023.md) | [View HTML](https://linjh38.github.io/AMC-Research-Archive/FEA-T.htm) |
-| AWN (Zhang 2023) | Adaptive Wavelet Network | [Read Review](AMC_Papers/@zhangAutomaticModulationClassification2023.md) | [View HTML](https://linjh38.github.io/AMC-Research-Archive/AWN.htm) |
-| CV-TRN (Li 2024) | Complex-Valued Transformer | [Read Review](AMC_Papers/@liComplexValuedTransformerAutomatic2024.md) | [View HTML](https://linjh38.github.io/AMC-Research-Archive/CV-TRN.htm) |
-| ULCNN (Guo 2024) | Ultralight CNN for UAV | [Read Review](AMC_Papers/@guoUltralightConvolutionalNeural2024.md) | [View HTML](https://linjh38.github.io/AMC-Research-Archive/ULCNN.htm) |
-| RepCCNet (Tang 2024) | Reparameterization Causal CNN | [Read Review](AMC_Papers/@tangReparameterizationCausalConvolutional2024.md) | [View HTML](https://linjh38.github.io/AMC-Research-Archive/RepCCNet.htm) |
-| CPPCNet (Xin 2025) | Complex Partial Pointwise CNN | [Read Review](AMC_Papers/@xinCPPCNetHighPerformanceLowComplexity2025.md) | [View HTML](https://linjh38.github.io/AMC-Research-Archive/CPPCNet.htm) |
-| IDHNet (Li 2026) | CNN-Transformer Hybrid | [Read Review](AMC_Papers/@liIDHNetCNNTransformerHybrid2026.md) | [View HTML](https://linjh38.github.io/AMC-Research-Archive/IDHNet.htm) |
+| FEA-T (Chen 2023) | Frame-wise Embedding Transformer | [Read Review](AMC_Papers/@chenAbandonLocalityFrameWise2023.md) | [View HTML](https://linjh38.github.io/AMC-Research-Archive/FEA-T.html) |
+| AWN (Zhang 2023) | Adaptive Wavelet Network | [Read Review](AMC_Papers/@zhangAutomaticModulationClassification2023.md) | [View HTML](https://linjh38.github.io/AMC-Research-Archive/AWN.html) |
+| CV-TRN (Li 2024) | Complex-Valued Transformer | [Read Review](AMC_Papers/@liComplexValuedTransformerAutomatic2024.md) | [View HTML](https://linjh38.github.io/AMC-Research-Archive/CV-TRN.html) |
+| ULCNN (Guo 2024) | Ultralight CNN for UAV | [Read Review](AMC_Papers/@guoUltralightConvolutionalNeural2024.md) | [View HTML](https://linjh38.github.io/AMC-Research-Archive/ULCNN.html) |
+| RepCCNet (Tang 2024) | Reparameterization Causal CNN | [Read Review](AMC_Papers/@tangReparameterizationCausalConvolutional2024.md) | [View HTML](https://linjh38.github.io/AMC-Research-Archive/RepCCNet.html) |
+| CPPCNet (Xin 2025) | Complex Partial Pointwise CNN | [Read Review](AMC_Papers/@xinCPPCNetHighPerformanceLowComplexity2025.md) | [View HTML](https://linjh38.github.io/AMC-Research-Archive/CPPCNet.html) |
+| IDHNet (Li 2026) | CNN-Transformer Hybrid | [Read Review](AMC_Papers/@liIDHNetCNNTransformerHybrid2026.md) | [View HTML](https://linjh38.github.io/AMC-Research-Archive/IDHNet.html) |
 
 ## My Research
 
@@ -32,7 +32,7 @@ This repository is an [Obsidian](https://obsidian.md/) vault synced with GitHub.
 
 1. Annotate papers in **Zotero**
 2. Import via **Obsidian Zotero Desktop Connector** → `AMC_Papers/@{citekey}.md`
-3. Export Zotero HTML report → `AMC_Papers/reports/{short-name}.htm`
+3. Export Zotero HTML report → `AMC_Papers/reports/{short-name}.html`
 4. Fill in `## AMC 연구 적용 포인트` for research ideas
 5. Document models in `My_Research/Models/` and results in `Experiments/`
 6. Commit with prefixes: `literature:`, `model:`, `experiment:`, `hub:`
@@ -47,12 +47,16 @@ Open this folder as an Obsidian vault. Recommended community plugins:
 
 ## HTML Reports (GitHub Pages)
 
-Zotero HTML reports are served via **GitHub Pages** so they render in the browser (not as raw source code).
+Zotero HTML reports are published via **GitHub Pages** (`text/html`로 렌더링).  
+`raw.githubusercontent.com` 링크는 HTML을 소스 코드로 보여주므로 사용하지 않습니다.
 
-**One-time setup** (if View HTML links return 404):
+### 최초 1회 설정 (필수)
 
-1. Open [Repository Settings → Pages](https://github.com/LinJH38/AMC-Research-Archive/settings/pages)
-2. Under **Build and deployment → Source**, select **GitHub Actions**
-3. Push to `main` — the `pages.yml` workflow deploys automatically
+1. [Repository → Settings → Pages](https://github.com/LinJH38/AMC-Research-Archive/settings/pages) 열기
+2. **Build and deployment → Source**: `Deploy from a branch` 선택
+3. **Branch**: `gh-pages` / `/ (root)` 선택 → **Save**
+4. 1~2분 후 [CV-TRN 리포트](https://linjh38.github.io/AMC-Research-Archive/CV-TRN.html)가 정상 렌더링되는지 확인
+
+`main`에 push하면 `Deploy HTML reports to GitHub Pages` 워크플로가 `gh-pages` 브랜치를 자동 갱신합니다.
 
 Base URL: `https://linjh38.github.io/AMC-Research-Archive/`
